@@ -8,7 +8,7 @@ class Input extends Component {
       .map((v) => {
         return parseInt(v);
       });
-    console.log(array);
+    this.props.updateTiles(array);
   };
 
   render() {

@@ -7,7 +7,7 @@ const Tile = (props) => {
     width: '40px',
     height: '40px',
   };
-  return <div style={styleTile}></div>;
+  return <div style={styleTile}>{props.value}</div>;
 };
 
 export default Tile;

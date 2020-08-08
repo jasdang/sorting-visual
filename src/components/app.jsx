@@ -8,10 +8,15 @@ class App extends Component {
       tiles: [],
     };
   }
+  addTiles = (array) => {
+    this.setState({tiles: array});
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div>
-        <Input />
+        <Input updateTiles={this.addTiles} />
         <TileList values={this.state.tiles} />
       </div>
     );
