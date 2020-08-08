@@ -1,19 +1,8 @@
 import React, {Component} from 'react';
-
+import Input from './input';
 class App extends Component {
-  handleSubmit = () => {
-    console.log('hi');
-  };
-
   render() {
-    return (
-      <div>
-        <form action='#' onSubmit={this.handleSubmit}>
-          <input type='text' />
-          <input type='submit' />
-        </form>
-      </div>
-    );
+    return <Input />;
   }
 }
 
