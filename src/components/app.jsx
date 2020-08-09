@@ -15,7 +15,9 @@ class App extends Component {
   };
 
   handleClick = () => {
-    this.addTiles([4, 5, 6]);
+    this.addTiles(quickSort(this.state.tiles));
+
+    console.log(typeof this.state.tiles[0]);
   };
 
   render() {
