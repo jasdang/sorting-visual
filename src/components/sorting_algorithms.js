@@ -16,13 +16,22 @@ const quickSortHelper = (array, startId, endId) => {
   let i = startId + 1;
   let j = endId;
   while (i <= j) {
-    if (array[i] > pointer && array[j] <= pointer) swap(array, i, j);
-    if (array[i] <= pointer) i++;
-    if (array[j] > pointer) j--;
+    if (array[i] > pointer && array[j] <= pointer) {
+      swap(array, i, j);
+    } else if (array[i] <= pointer) {
+      i++;
+    } else if (array[j] > pointer) {
+      j--;
+    }
   }
   swap(array, startId, j);
-  quickSortHelper(array, startId, j - 1);
-  quickSortHelper(array, j + 1, endId);
+  if (j - startId < endId - j) {
+    quickSortHelper(array, startId, j - 1);
+    quickSortHelper(array, j + 1, endId);
+  } else {
+    quickSortHelper(array, j + 1, endId);
+    quickSortHelper(array, startId, j - 1);
+  }
   return array;
 };
 
