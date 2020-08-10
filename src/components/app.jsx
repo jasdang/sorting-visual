@@ -13,6 +13,13 @@ class App extends Component {
     this.setState({tiles: array});
     console.log(this.state);
   };
+  generateArray = () => {
+    let array = [];
+    for (let i = 0; i < 20; i++) {
+      array.push(Math.floor(Math.random() * 21));
+    }
+    this.addTiles(array);
+  };
 
   handleClick = () => {
     this.addTiles(quickSort(this.state.tiles));
@@ -25,6 +32,7 @@ class App extends Component {
       <div>
         <Input updateTiles={this.addTiles} />
         <TileList values={this.state.tiles} />
+        <button onClick={this.generateArray}>{'Generate'}</button>
         <button onClick={this.handleClick}>{'Sort'}</button>
       </div>
     );
