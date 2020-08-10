@@ -11,20 +11,18 @@ class App extends Component {
   }
   addTiles = (array) => {
     this.setState({tiles: array});
-    console.log(this.state);
   };
   generateArray = () => {
     let array = [];
     for (let i = 0; i < 20; i++) {
-      array.push(Math.floor(Math.random() * 21));
+      array.push(Math.floor(Math.random() * 100));
     }
     this.addTiles(array);
+    console.log(array);
   };
 
   handleClick = () => {
     this.addTiles(quickSort(this.state.tiles));
-
-    console.log(typeof this.state.tiles[0]);
   };
 
   render() {

@@ -3,7 +3,7 @@ import Tile from './tile';
 
 const TileList = (props) => {
   return props.values.map((value) => {
-    return <Tile value={value} key={value} />;
+    return <Tile value={value} key={Math.floor(Math.random() * 1000)} />;
   });
 };
 
