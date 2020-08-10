@@ -9,6 +9,7 @@ class Input extends Component {
         return parseInt(v);
       });
     this.props.updateTiles(array);
+    document.getElementById('input').value = '';
   };
 
   render() {
