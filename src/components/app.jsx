@@ -16,7 +16,7 @@ class App extends Component {
   };
   generateArray = () => {
     let array = [];
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 100; i++) {
       array.push(Math.floor(Math.random() * 100));
     }
     this.addTiles(array);
@@ -88,7 +88,7 @@ class App extends Component {
   }
 
   async swap(array, i, j) {
-    await this.sleep(25);
+    await this.sleep(5);
     let temp = array[i];
     array[i] = array[j];
     array[j] = temp;
