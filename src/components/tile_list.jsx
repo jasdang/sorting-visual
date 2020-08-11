@@ -1,9 +1,9 @@
 import React from 'react';
-import Tile from './tile';
+import Bar from './bar';
 
 const TileList = (props) => {
   return props.values.map((value) => {
-    return <Tile value={value} key={Math.floor(Math.random() * 1000)} />;
+    return <Bar height={value} key={Math.floor(Math.random() * 100000000)} />;
   });
 };
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Input from './input';
 import TileList from './tile_list';
+import Bar from './bar';
 import quickSort from './sorting_algorithms';
 class App extends Component {
   constructor(props) {
@@ -27,8 +28,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Input updateTiles={this.addTiles} />
+      <div className='container'>
+        {/* <Input updateTiles={this.addTiles} /> */}
         <TileList values={this.state.tiles} />
         <button onClick={this.generateArray}>{'Generate'}</button>
         <button onClick={this.handleClick}>{'Sort'}</button>
