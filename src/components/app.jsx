@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Input from './input';
 import TileList from './tile_list';
 import Bar from './bar';
 import regeneratorRuntime from 'regenerator-runtime';
@@ -9,10 +8,14 @@ class App extends Component {
     super(props);
     this.state = {
       tiles: [],
+      colors: [],
     };
   }
   addTiles = (array) => {
     this.setState({tiles: array});
+  };
+  addColors = (array) => {
+    this.setState({colors: array});
   };
   generateArray = () => {
     let array = [];
@@ -30,7 +33,7 @@ class App extends Component {
     return (
       <div>
         {/* <Input updateTiles={this.addTiles} /> */}
-        <TileList values={this.state.tiles} />
+        <TileList values={this.state.tiles} colors={this.state.colors} />
         <button onClick={this.generateArray}>{'Generate'}</button>
         <button onClick={this.handleClick}>{'Sort'}</button>
       </div>
@@ -43,7 +46,6 @@ class App extends Component {
   };
 
   async quickSortHelper(array, startId, endId) {
-    let t = 1;
     if (endId - startId < 1) {
       this.addTiles(array);
       return array;

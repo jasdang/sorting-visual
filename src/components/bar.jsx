@@ -6,7 +6,7 @@ const Bar = (props) => {
     border: '1px solid white',
     width: '10px',
     height: `${props.height}vh`,
-    backgroundColor: 'rgb(50, 115, 220)',
+    backgroundColor: `${props.color ? 'red' : 'rgb(50, 115, 220)'}`,
     margin: '0px',
   };
   return <div style={styleBar}></div>;
