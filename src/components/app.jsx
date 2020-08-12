@@ -42,12 +42,18 @@ class App extends Component {
 
   // TESTING
   quickSort = (array) => {
-    return this.quickSortHelper(array, 0, array.length - 1);
+    let colors = Array(array.length).fill(false);
+    return this.quickSortHelper(array, 0, array.length - 1, colors);
   };
 
-  async quickSortHelper(array, startId, endId) {
+  async quickSortHelper(array, startId, endId, colors) {
     if (endId - startId < 1) {
+      colors[endId] = true;
+      colors[startId] = true;
+      this.addColors(colors);
       this.addTiles(array);
+      colors[endId] = false;
+      colors[startId] = false;
       return array;
     }
 
@@ -55,7 +61,12 @@ class App extends Component {
       if (array[endId] < array[startId]) {
         await this.swap(array, startId, endId);
       }
+      colors[endId] = true;
+      colors[startId] = true;
+      this.addColors(colors);
       this.addTiles(array);
+      colors[endId] = false;
+      colors[startId] = false;
       return array;
     }
 
@@ -63,26 +74,43 @@ class App extends Component {
     let i = startId + 1;
     let j = endId;
     while (i <= j) {
+      colors[startId] = true;
       if (array[i] > pointer && array[j] <= pointer) {
         await this.swap(array, i, j);
       } else if (array[i] <= pointer) {
+        colors[i] = false;
         i++;
+        colors[i] = true;
+        this.addColors(colors);
       } else if (array[j] > pointer) {
+        colors[j] = false;
         j--;
+        colors[j] = true;
+        this.addColors(colors);
       }
+      // this.addColors(colors);
       this.addTiles(array);
     }
+    colors[startId] = false;
+    colors[i] = false;
+    colors[j] = false;
+    this.addColors(colors);
     await this.swap(array, startId, j);
+    colors[startId] = true;
+    colors[j] = true;
+    this.addColors(colors);
     this.addTiles(array);
+    colors[startId] = false;
+    colors[j] = false;
     if (j - startId < endId - j) {
       await Promise.all([
-        this.quickSortHelper(array, startId, j - 1),
-        this.quickSortHelper(array, j + 1, endId),
+        this.quickSortHelper(array, startId, j - 1, colors),
+        this.quickSortHelper(array, j + 1, endId, colors),
       ]);
     } else {
       await Promise.all([
-        this.quickSortHelper(array, j + 1, endId),
-        this.quickSortHelper(array, startId, j - 1),
+        this.quickSortHelper(array, j + 1, endId, colors),
+        this.quickSortHelper(array, startId, j - 1, colors),
       ]);
     }
     this.addTiles(array);
@@ -90,7 +118,7 @@ class App extends Component {
   }
 
   async swap(array, i, j) {
-    await this.sleep(5);
+    await this.sleep(0);
     let temp = array[i];
     array[i] = array[j];
     array[j] = temp;
