@@ -11,7 +11,7 @@ export const array = (state = [], action) => {
       }
       return {
         ...state,
-        array: array,
+        tiles: array,
       };
     }
     default:
