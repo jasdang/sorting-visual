@@ -105,10 +105,9 @@ const App = ({tiles = [], colors = [], onGenerateArrayPressed}) => {
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
-
+  console.log(tiles);
   return (
     <div>
-      {/* <Input updateTiles={this.addTiles} /> */}
       <TileList values={tiles} colors={colors} />
       <button onClick={onGenerateArrayPressed}>{'Generate'}</button>
       <button onClick={handleClick}>{'Sort'}</button>
@@ -116,7 +115,7 @@ const App = ({tiles = [], colors = [], onGenerateArrayPressed}) => {
   );
 };
 const mapStateToProps = (state) => ({
-  array: state.tiles,
+  tiles: state.array.tiles,
   color: [],
 });
 const mapDispatchToProps = (dispatch) => ({
