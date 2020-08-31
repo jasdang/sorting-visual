@@ -9,7 +9,10 @@ export const array = (state, action) => {
       for (let i = 0; i < 100; i++) {
         array.push(Math.floor(Math.random() * 100));
       }
-      return;
+      return {
+        ...state,
+        array: array,
+      };
     }
   }
 };
