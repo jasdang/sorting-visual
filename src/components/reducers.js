@@ -1,6 +1,6 @@
-import {generateArray} from './actions';
+import {GENERATE_ARRAY} from './actions';
 
-export const array = (state, action) => {
+export const array = (state = [], action) => {
   const {type, payload} = action;
 
   switch (type) {
@@ -14,5 +14,7 @@ export const array = (state, action) => {
         array: array,
       };
     }
+    default:
+      return state;
   }
 };
