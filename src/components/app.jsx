@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {generateArray} from './actions';
 import TileList from './tile_list';
 import Bar from './bar';
 import regeneratorRuntime from 'regenerator-runtime';
@@ -17,13 +19,13 @@ class App extends Component {
   addColors = (array) => {
     this.setState({colors: array});
   };
-  generateArray = () => {
-    let array = [];
-    for (let i = 0; i < 100; i++) {
-      array.push(Math.floor(Math.random() * 100));
-    }
-    this.addTiles(array);
-  };
+  // generateArray = () => {
+  //   let array = [];
+  //   for (let i = 0; i < 100; i++) {
+  //     array.push(Math.floor(Math.random() * 100));
+  //   }
+  //   this.addTiles(array);
+  // };
 
   handleClick = () => {
     this.quickSort(this.state.tiles);
@@ -34,7 +36,9 @@ class App extends Component {
       <div>
         {/* <Input updateTiles={this.addTiles} /> */}
         <TileList values={this.state.tiles} colors={this.state.colors} />
-        <button onClick={this.generateArray}>{'Generate'}</button>
+        <button onClick={this.props.onGenerateArrayPressed}>
+          {'Generate'}
+        </button>
         <button onClick={this.handleClick}>{'Sort'}</button>
       </div>
     );
@@ -129,5 +133,13 @@ class App extends Component {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
+const mapStateToProps = (state) => ({
+  array: state.array,
+});
+const mapDispatchToProps = (dispatch) => ({
+  onGenerateArrayPressed: () => {
+    dispatch(generateArray());
+  },
+});
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
