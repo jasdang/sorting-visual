@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {generateArray} from './actions';
+import {generateArray, quickSortAction} from './actions';
 import TileList from './tile_list';
 import Bar from './bar';
 import regeneratorRuntime from 'regenerator-runtime';
 
-const App = ({tiles = [], colors = [], onGenerateArrayPressed}) => {
+const App = ({
+  tiles = [],
+  colors = [],
+  onGenerateArrayPressed,
+  onQuickSortPressed,
+}) => {
   const addTiles = (array) => {
     return array;
   };
@@ -119,9 +124,8 @@ const mapStateToProps = (state) => ({
   color: [],
 });
 const mapDispatchToProps = (dispatch) => ({
-  onGenerateArrayPressed: () => {
-    dispatch(generateArray());
-  },
+  onGenerateArrayPressed: () => dispatch(generateArray()),
+  onQuickSortPressed: () => dispatch(quickSortAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
