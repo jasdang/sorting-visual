@@ -1,4 +1,4 @@
-import {GENERATE_ARRAY, QUICK_SORT} from './actions';
+import {GENERATE_ARRAY, UPDATE_ARRAY} from './actions';
 
 export const array = (state = [], action) => {
   const {type, payload} = action;
@@ -14,7 +14,8 @@ export const array = (state = [], action) => {
         tiles: array,
       };
     }
-    case QUICK_SORT: {
+    case UPDATE_ARRAY: {
+      console.log({action});
       const {array} = payload;
       return {
         ...state,

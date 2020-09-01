@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {generateArray, quickSortAction} from './actions';
+import {generateArray, updateArray} from './actions';
 import TileList from './tile_list';
 import Bar from './bar';
 import regeneratorRuntime from 'regenerator-runtime';
@@ -9,11 +9,8 @@ const App = ({
   tiles = [],
   colors = [],
   onGenerateArrayPressed,
-  onQuickSortPressed,
+  updateArray,
 }) => {
-  const addTiles = (array) => {
-    return array;
-  };
   const addColors = (array) => {
     return array;
   };
@@ -33,7 +30,7 @@ const App = ({
       colors[endId] = true;
       colors[startId] = true;
       addColors(colors);
-      addTiles(array);
+      updateArray(array);
       colors[endId] = false;
       colors[startId] = false;
       return array;
@@ -46,7 +43,7 @@ const App = ({
       colors[endId] = true;
       colors[startId] = true;
       addColors(colors);
-      addTiles(array);
+      updateArray(array);
       colors[endId] = false;
       colors[startId] = false;
       return array;
@@ -71,7 +68,7 @@ const App = ({
         addColors(colors);
       }
       // this.addColors(colors);
-      addTiles(array);
+      updateArray(array);
     }
     colors[startId] = false;
     colors[i] = false;
@@ -81,7 +78,7 @@ const App = ({
     colors[startId] = true;
     colors[j] = true;
     addColors(colors);
-    addTiles(array);
+    updateArray(array);
     colors[startId] = false;
     colors[j] = false;
     if (j - startId < endId - j) {
@@ -95,7 +92,7 @@ const App = ({
         quickSortHelper(array, startId, j - 1, colors),
       ]);
     }
-    addTiles(array);
+    updateArray(array);
     return array;
   };
 
@@ -110,7 +107,7 @@ const App = ({
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
-  console.log(tiles);
+  // console.log(tiles);
   return (
     <div>
       <TileList values={tiles} colors={colors} />
@@ -125,7 +122,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   onGenerateArrayPressed: () => dispatch(generateArray()),
-  onQuickSortPressed: () => dispatch(quickSortAction()),
+  updateArray: (array) => dispatch(updateArray(array)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
