@@ -8,3 +8,9 @@ export const updateArray = (array) => ({
   type: UPDATE_ARRAY,
   payload: {array},
 });
+
+export const UPDATE_COLOR = 'UPDATE_COLOR';
+export const updateColor = (colors) => ({
+  type: UPDATE_COLOR,
+  payload: {colors},
+});

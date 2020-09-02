@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {generateArray, updateArray} from './actions';
+import {generateArray, updateArray, updateColor} from './actions';
 import TileList from './tile_list';
 import Bar from './bar';
 import regeneratorRuntime from 'regenerator-runtime';
@@ -11,21 +11,21 @@ const App = ({
   onGenerateArrayPressed,
   updateArray,
 }) => {
-  const addColors = (array) => {
-    return array;
+  const addColors = (colors) => {
+    updateColor(colors);
   };
 
   const handleClick = () => {
-    quickSort(tiles);
+    quickSort(tiles, colors);
   };
 
   // TESTING
-  const quickSort = (array) => {
-    let colors = Array(array.length).fill(false);
+  const quickSort = (array, colors) => {
     return quickSortHelper(array, 0, array.length - 1, colors);
   };
 
   const quickSortHelper = async (array, startId, endId, colors) => {
+    console.log('HELLO');
     if (endId - startId < 1) {
       colors[endId] = true;
       colors[startId] = true;
@@ -33,6 +33,7 @@ const App = ({
       updateArray(array);
       colors[endId] = false;
       colors[startId] = false;
+      addColors(colors);
       return array;
     }
 
@@ -46,6 +47,7 @@ const App = ({
       updateArray(array);
       colors[endId] = false;
       colors[startId] = false;
+      addColors(colors);
       return array;
     }
 
@@ -63,6 +65,7 @@ const App = ({
         addColors(colors);
       } else if (array[j] > pointer) {
         colors[j] = false;
+        addColors(colors);
         j--;
         colors[j] = true;
         addColors(colors);
@@ -81,6 +84,7 @@ const App = ({
     updateArray(array);
     colors[startId] = false;
     colors[j] = false;
+    addColors(colors);
     if (j - startId < endId - j) {
       await Promise.all([
         quickSortHelper(array, startId, j - 1, colors),
@@ -107,7 +111,6 @@ const App = ({
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
-  // console.log(tiles);
   return (
     <div>
       <TileList values={tiles} colors={colors} />
@@ -116,13 +119,15 @@ const App = ({
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   tiles: state.array.tiles,
-  color: [],
+  colors: state.array.colors,
 });
 const mapDispatchToProps = (dispatch) => ({
   onGenerateArrayPressed: () => dispatch(generateArray()),
   updateArray: (array) => dispatch(updateArray(array)),
+  updateColor: (colors) => dispatch(updateColor(colors)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
