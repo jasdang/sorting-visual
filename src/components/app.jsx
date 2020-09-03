@@ -10,11 +10,8 @@ const App = ({
   colors = [],
   onGenerateArrayPressed,
   updateArray,
+  updateColor,
 }) => {
-  const addColors = (colors) => {
-    updateColor(colors);
-  };
-
   const handleClick = () => {
     quickSort(tiles, colors);
   };
@@ -25,15 +22,23 @@ const App = ({
   };
 
   const quickSortHelper = async (array, startId, endId, colors) => {
-    console.log('HELLO');
+    if (
+      startId < 0 ||
+      endId < 0 ||
+      startId >= array.length ||
+      startId >= array.length
+    )
+      return array;
+
     if (endId - startId < 1) {
-      colors[endId] = true;
+      // colors[endId] = true;
       colors[startId] = true;
-      addColors(colors);
+      updateColor(colors);
       updateArray(array);
-      colors[endId] = false;
+      // colors[endId] = false;
       colors[startId] = false;
-      addColors(colors);
+      updateColor(colors);
+      // console.log('1', colors.length);
       return array;
     }
 
@@ -43,11 +48,13 @@ const App = ({
       }
       colors[endId] = true;
       colors[startId] = true;
-      addColors(colors);
+      updateColor(colors);
       updateArray(array);
       colors[endId] = false;
       colors[startId] = false;
-      addColors(colors);
+      updateColor(colors);
+      // console.log('2', colors.length);
+
       return array;
     }
 
@@ -62,29 +69,29 @@ const App = ({
         colors[i] = false;
         i++;
         colors[i] = true;
-        addColors(colors);
+        updateColor(colors);
       } else if (array[j] > pointer) {
         colors[j] = false;
-        addColors(colors);
+        updateColor(colors);
         j--;
         colors[j] = true;
-        addColors(colors);
+        updateColor(colors);
       }
-      // this.addColors(colors);
+      // this.updateColor(colors);
       updateArray(array);
     }
     colors[startId] = false;
     colors[i] = false;
     colors[j] = false;
-    addColors(colors);
+    updateColor(colors);
     await swap(array, startId, j);
     colors[startId] = true;
     colors[j] = true;
-    addColors(colors);
+    updateColor(colors);
     updateArray(array);
     colors[startId] = false;
     colors[j] = false;
-    addColors(colors);
+    updateColor(colors);
     if (j - startId < endId - j) {
       await Promise.all([
         quickSortHelper(array, startId, j - 1, colors),
@@ -97,6 +104,7 @@ const App = ({
       ]);
     }
     updateArray(array);
+    // console.log('3', colors.length);
     return array;
   };
 
@@ -126,7 +134,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   onGenerateArrayPressed: () => dispatch(generateArray()),
-  updateArray: (array) => dispatch(updateArray(array)),
+  updateArray: (tiles) => dispatch(updateArray(tiles)),
   updateColor: (colors) => dispatch(updateColor(colors)),
 });
 

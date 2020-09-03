@@ -4,9 +4,9 @@ export const generateArray = () => ({
 });
 
 export const UPDATE_ARRAY = 'UPDATE_ARRAY';
-export const updateArray = (array) => ({
+export const updateArray = (tiles) => ({
   type: UPDATE_ARRAY,
-  payload: {array},
+  payload: {tiles},
 });
 
 export const UPDATE_COLOR = 'UPDATE_COLOR';

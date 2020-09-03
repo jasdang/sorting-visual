@@ -17,3 +17,7 @@ export const configuredStore = () =>
     initialStore,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
+
+export const updatedStore = configuredStore().subscribe(() =>
+  console.log(configuredStore().getState())
+);

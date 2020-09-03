@@ -1,6 +1,7 @@
 import {GENERATE_ARRAY, UPDATE_ARRAY, UPDATE_COLOR} from './actions';
 
 export const array = (state = {}, action) => {
+  // console.log({state, action});
   const {type, payload} = action;
 
   switch (type) {
@@ -9,25 +10,25 @@ export const array = (state = {}, action) => {
       for (let i = 0; i < 100; i++) {
         array.push(Math.floor(Math.random() * 100));
       }
-      console.log(array);
       return {
-        ...state,
+        ...array,
         tiles: array,
         colors: array.slice().fill(false),
       };
     }
     case UPDATE_ARRAY: {
-      const {array} = payload;
+      const {tiles} = payload;
       return {
-        ...state,
-        tiles: array,
-        colors: array.slice().fill(false),
+        ...array,
+        tiles: tiles,
+        // colors: [],
       };
     }
     case UPDATE_COLOR: {
       const {colors} = payload;
+      console.log(colors.some((c) => c === true));
       return {
-        ...state,
+        ...array,
         colors: colors,
       };
     }
