@@ -109,7 +109,7 @@ const App = ({
   };
 
   const swap = async (array, i, j) => {
-    await sleep(0);
+    await sleep(10);
     let temp = array[i];
     array[i] = array[j];
     array[j] = temp;

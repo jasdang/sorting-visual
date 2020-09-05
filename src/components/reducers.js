@@ -6,29 +6,27 @@ export const array = (state = {}, action) => {
 
   switch (type) {
     case GENERATE_ARRAY: {
-      let array = [];
+      let tiles = [];
       for (let i = 0; i < 100; i++) {
-        array.push(Math.floor(Math.random() * 100));
+        tiles.push(Math.floor(Math.random() * 100));
       }
       return {
         ...array,
-        tiles: array,
-        colors: array.slice().fill(false),
+        tiles: tiles,
+        colors: tiles.slice().fill(false),
       };
     }
     case UPDATE_ARRAY: {
       const {tiles} = payload;
       return {
-        ...array,
+        ...state.array,
         tiles: tiles,
-        // colors: [],
       };
     }
     case UPDATE_COLOR: {
       const {colors} = payload;
-      console.log(colors.some((c) => c === true));
       return {
-        ...array,
+        ...state.array,
         colors: colors,
       };
     }
