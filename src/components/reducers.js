@@ -11,7 +11,7 @@ export const array = (state = {}, action) => {
         tiles.push(Math.floor(Math.random() * 100));
       }
       return {
-        ...array,
+        // ...array,
         tiles: tiles,
         colors: tiles.slice().fill(false),
       };
@@ -19,14 +19,14 @@ export const array = (state = {}, action) => {
     case UPDATE_ARRAY: {
       const {tiles} = payload;
       return {
-        ...state.array,
+        ...state,
         tiles: tiles,
       };
     }
     case UPDATE_COLOR: {
       const {colors} = payload;
       return {
-        ...state.array,
+        ...state,
         colors: colors,
       };
     }

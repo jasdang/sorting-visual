@@ -134,8 +134,8 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   onGenerateArrayPressed: () => dispatch(generateArray()),
-  updateArray: (tiles) => dispatch(updateArray(tiles)),
-  updateColor: (colors) => dispatch(updateColor(colors)),
+  updateArray: (tiles) => dispatch(updateArray([...tiles])),
+  updateColor: (colors) => dispatch(updateColor([...colors])),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
