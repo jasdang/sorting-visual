@@ -5,10 +5,7 @@ export const array = (state = {}, action) => {
 
   switch (type) {
     case GENERATE_ARRAY: {
-      let tiles = [];
-      for (let i = 0; i < 100; i++) {
-        tiles.push(Math.floor(Math.random() * 100));
-      }
+      let tiles = createArray();
       return {
         tiles: tiles,
         colors: tiles.slice().fill('blue'),
@@ -31,4 +28,12 @@ export const array = (state = {}, action) => {
     default:
       return state;
   }
+};
+
+export const createArray = (length = 100) => {
+  let tiles = [];
+  for (let i = 0; i < length; i++) {
+    tiles.push(Math.floor(Math.random() * 100));
+  }
+  return tiles;
 };
