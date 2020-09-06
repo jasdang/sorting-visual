@@ -31,14 +31,11 @@ const App = ({
       return array;
 
     if (endId - startId < 1) {
-      // colors[endId] = true;
-      colors[startId] = true;
-      updateColor(colors);
+      // colors[startId] = true;
+      // updateColor(colors);
       updateArray(array);
-      // colors[endId] = false;
-      colors[startId] = false;
-      updateColor(colors);
-      // console.log('1', colors.length);
+      // colors[startId] = false;
+      // updateColor(colors);
       return array;
     }
 
@@ -46,15 +43,13 @@ const App = ({
       if (array[endId] < array[startId]) {
         await swap(array, startId, endId);
       }
-      colors[endId] = true;
-      colors[startId] = true;
-      updateColor(colors);
+      // colors[endId] = true;
+      // colors[startId] = true;
+      // updateColor(colors);
       updateArray(array);
-      colors[endId] = false;
-      colors[startId] = false;
-      updateColor(colors);
-      // console.log('2', colors.length);
-
+      // colors[endId] = false;
+      // colors[startId] = false;
+      // updateColor(colors);
       return array;
     }
 
@@ -62,36 +57,35 @@ const App = ({
     let i = startId + 1;
     let j = endId;
     while (i <= j) {
-      colors[startId] = true;
+      // colors[startId] = true;
       if (array[i] > pointer && array[j] <= pointer) {
         await swap(array, i, j);
       } else if (array[i] <= pointer) {
-        colors[i] = false;
+        // colors[i] = false;
         i++;
-        colors[i] = true;
-        updateColor(colors);
+        // colors[i] = true;
+        // updateColor(colors);
       } else if (array[j] > pointer) {
-        colors[j] = false;
-        updateColor(colors);
+        // colors[j] = false;
+        // updateColor(colors);
         j--;
-        colors[j] = true;
-        updateColor(colors);
+        // colors[j] = true;
+        // updateColor(colors);
       }
-      // this.updateColor(colors);
       updateArray(array);
     }
-    colors[startId] = false;
-    colors[i] = false;
-    colors[j] = false;
-    updateColor(colors);
+    // colors[startId] = false;
+    // colors[i] = false;
+    // colors[j] = false;
+    // updateColor(colors);
     await swap(array, startId, j);
-    colors[startId] = true;
-    colors[j] = true;
-    updateColor(colors);
+    // colors[startId] = true;
+    // colors[j] = true;
+    // updateColor(colors);
     updateArray(array);
-    colors[startId] = false;
-    colors[j] = false;
-    updateColor(colors);
+    // colors[startId] = false;
+    // colors[j] = false;
+    // updateColor(colors);
     if (j - startId < endId - j) {
       await Promise.all([
         quickSortHelper(array, startId, j - 1, colors),
@@ -104,7 +98,6 @@ const App = ({
       ]);
     }
     updateArray(array);
-    // console.log('3', colors.length);
     return array;
   };
 
