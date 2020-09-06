@@ -13,7 +13,7 @@ export const array = (state = {}, action) => {
       return {
         // ...array,
         tiles: tiles,
-        colors: tiles.slice().fill(false),
+        colors: tiles.slice().fill('blue'),
       };
     }
     case UPDATE_ARRAY: {
