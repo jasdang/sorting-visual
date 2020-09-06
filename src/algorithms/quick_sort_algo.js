@@ -1,5 +1,5 @@
 import {store} from '../../store';
-import {updateColor, updateArray} from './actions';
+import {updateColor, updateArray} from '../components/actions';
 import regeneratorRuntime from 'regenerator-runtime';
 
 const quickSort = (array, colors) => {
@@ -10,22 +10,14 @@ const quickSortHelper = async (array, startId, endId, colors) => {
   console.log('Running quick sort');
   colors[startId] = 'red';
   colors[endId] = 'red';
-  store.dispatch(updateColor([...colors]));
-
-  if (
-    startId < 0 ||
-    endId < 0 ||
-    startId >= array.length ||
-    startId >= array.length
-  )
-    return array;
+  store.dispatch(updateColor(colors));
 
   if (endId - startId < 1) {
-    store.dispatch(updateArray([...array]));
+    store.dispatch(updateArray(array));
 
     colors[startId] = 'black';
     colors[endId] = 'black';
-    store.dispatch(updateColor([...colors]));
+    store.dispatch(updateColor(colors));
 
     return array;
   }
@@ -35,12 +27,12 @@ const quickSortHelper = async (array, startId, endId, colors) => {
       await swap(array, startId, endId);
       colors[startId] = 'grey';
       colors[endId] = 'grey';
-      store.dispatch(updateColor([...colors]));
+      store.dispatch(updateColor(colors));
     }
-    store.dispatch(updateArray([...array]));
+    store.dispatch(updateArray(array));
     colors[startId] = 'black';
     colors[endId] = 'black';
-    store.dispatch(updateColor([...colors]));
+    store.dispatch(updateColor(colors));
     return array;
   }
 
@@ -50,7 +42,7 @@ const quickSortHelper = async (array, startId, endId, colors) => {
   while (i <= j) {
     colors[i] = 'grey';
     colors[j] = 'grey';
-    store.dispatch(updateColor([...colors]));
+    store.dispatch(updateColor(colors));
 
     if (array[i] > pointer && array[j] <= pointer) {
       await swap(array, i, j);
@@ -58,18 +50,18 @@ const quickSortHelper = async (array, startId, endId, colors) => {
       colors[j] = 'grey';
     } else if (array[i] <= pointer) {
       colors[i] = 'blue';
-      store.dispatch(updateColor([...colors]));
+      store.dispatch(updateColor(colors));
       i++;
     } else if (array[j] > pointer) {
       colors[j] = 'blue';
       j--;
     }
-    store.dispatch(updateArray([...array]));
+    store.dispatch(updateArray(array));
   }
   await swap(array, startId, j);
-  store.dispatch(updateArray([...array]));
+  store.dispatch(updateArray(array));
   colors[j] = 'black';
-  store.dispatch(updateColor([...colors]));
+  store.dispatch(updateColor(colors));
   if (j - startId < endId - j) {
     await Promise.all([
       quickSortHelper(array, startId, j - 1, colors),
@@ -81,10 +73,10 @@ const quickSortHelper = async (array, startId, endId, colors) => {
       quickSortHelper(array, startId, j - 1, colors),
     ]);
   }
-  store.dispatch(updateArray([...array]));
+  store.dispatch(updateArray(array));
   colors[startId] = 'black';
   colors[endId] = 'black';
-  store.dispatch(updateColor([...colors]));
+  store.dispatch(updateColor(colors));
   return array;
 };
 

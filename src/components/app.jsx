@@ -1,22 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {generateArray, updateArray, updateColor} from './actions';
-import TileList from './tile_list';
-import quickSort from './sorting_algorithms';
+import Bar_list from './bar_list';
+import quickSort from '../algorithms/quick_sort_algo';
 
-const App = ({
-  tiles = [],
-  colors = [],
-  onGenerateArrayPressed,
-  updateArray,
-  updateColor,
-}) => {
+const App = ({tiles = [], colors = [], onGenerateArrayPressed}) => {
   const handleClick = () => {
     quickSort(tiles, colors);
   };
   return (
     <div>
-      <TileList values={tiles} colors={colors} />
+      <Bar_list values={tiles} colors={colors} />
       <button onClick={onGenerateArrayPressed}>{'Generate'}</button>
       <button onClick={handleClick}>{'Sort'}</button>
     </div>
@@ -29,8 +23,6 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   onGenerateArrayPressed: () => dispatch(generateArray()),
-  updateArray: (tiles) => dispatch(updateArray([...tiles])),
-  updateColor: (colors) => dispatch(updateColor([...colors])),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Bar from './bar';
 
-const TileList = (props) => {
+const BarList = (props) => {
   return props.values.map((value, id) => {
     return (
       <Bar
@@ -13,4 +13,4 @@ const TileList = (props) => {
   });
 };
 
-export default TileList;
+export default BarList;
