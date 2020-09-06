@@ -1,8 +1,16 @@
 import React from 'react';
 import Bar from './bar';
+import styled from 'styled-components';
+
+const BarListContainer = styled.div`
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+`;
 
 const BarList = (props) => {
-  return props.values.map((value, id) => {
+  const barList = props.values.map((value, id) => {
     return (
       <Bar
         height={value}
@@ -11,6 +19,8 @@ const BarList = (props) => {
       />
     );
   });
+
+  return <BarListContainer>{barList}</BarListContainer>;
 };
 
 export default BarList;

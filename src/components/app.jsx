@@ -1,19 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {generateArray, updateArray, updateColor} from './actions';
-import Bar_list from './bar_list';
+import BarList from './bar_list';
+import ToolBox from './toolbox';
 import quickSort from '../algorithms/quick_sort_algo';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const App = ({tiles = [], colors = [], onGenerateArrayPressed}) => {
   const handleClick = () => {
     quickSort(tiles, colors);
   };
   return (
-    <div>
-      <Bar_list values={tiles} colors={colors} />
-      <button onClick={onGenerateArrayPressed}>{'Generate'}</button>
-      <button onClick={handleClick}>{'Sort'}</button>
-    </div>
+    <AppContainer>
+      <BarList values={tiles} colors={colors} />
+      <ToolBox
+        onGenerateArrayPressed={onGenerateArrayPressed}
+        handleClick={handleClick}></ToolBox>
+    </AppContainer>
   );
 };
 

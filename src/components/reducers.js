@@ -5,9 +5,12 @@ export const array = (state = {}, action) => {
 
   switch (type) {
     case GENERATE_ARRAY: {
-      let tiles = createArray();
+      const {length} = payload;
+      let tiles = createArray(length);
+      console.log(length);
       return {
-        tiles: tiles,
+        ...state,
+        tiles: [...tiles],
         colors: tiles.slice().fill('blue'),
       };
     }
@@ -30,7 +33,7 @@ export const array = (state = {}, action) => {
   }
 };
 
-export const createArray = (length = 100) => {
+export const createArray = (length = 50) => {
   let tiles = [];
   for (let i = 0; i < length; i++) {
     tiles.push(Math.floor(Math.random() * 100));

@@ -1,6 +1,7 @@
 export const GENERATE_ARRAY = 'GENERATE_ARRAY';
-export const generateArray = () => ({
+export const generateArray = (length) => ({
   type: GENERATE_ARRAY,
+  payload: {length},
 });
 
 export const UPDATE_ARRAY = 'UPDATE_ARRAY';
