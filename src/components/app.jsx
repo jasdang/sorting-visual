@@ -17,7 +17,7 @@ const App = ({tiles = [], colors = [], onGenerateArrayPressed}) => {
   };
   return (
     <AppContainer>
-      <BarList values={tiles} colors={colors} />
+      <BarList />
       <ToolBox
         onGenerateArrayPressed={onGenerateArrayPressed}
         handleClick={handleClick}></ToolBox>

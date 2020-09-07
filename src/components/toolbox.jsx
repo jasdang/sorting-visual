@@ -19,14 +19,18 @@ const ToolBox = ({onGenerateArrayPressed, handleClick, generateArray}) => {
   };
   return (
     <ToolBoxContainer>
-      <Button onClick={onGenerateArrayPressed}>{'Generate'}</Button>
-      <Button onClick={handleClick}>{'Sort'}</Button>
+      <Button onClick={onGenerateArrayPressed}>Generate</Button>
+      <Button onClick={handleClick}>Sort</Button>
+      <label htmlFor='arrayLength'>Set Array Length</label>
       <input
         type='range'
         name='arrayLength'
         id='arrayLength'
+        max='200'
         onChange={handleChange}
       />
+      <label htmlFor='sortingSpeed'>Set Speed</label>
+      <input type='range' />
     </ToolBoxContainer>
   );
 };
