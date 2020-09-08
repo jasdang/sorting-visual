@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Bar from './bar';
 import styled from 'styled-components';
+import {getTiles, getColors} from './selectors';
 
 const BarListContainer = styled.div`
   width: 1200px;
@@ -28,9 +29,9 @@ const BarList = ({tiles, colors}) => {
   return <BarListContainer>{barList}</BarListContainer>;
 };
 
-const mapPropsToState = (state) => ({
-  tiles: state.array.tiles,
-  colors: state.array.colors,
+const mapStateToProps = (state) => ({
+  tiles: getTiles(state),
+  colors: getColors(state),
 });
 
-export default connect(mapPropsToState)(BarList);
+export default connect(mapStateToProps)(BarList);

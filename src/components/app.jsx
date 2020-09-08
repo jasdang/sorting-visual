@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {generateArray, updateArray, updateColor} from './actions';
+import {getTiles, getColors} from './selectors';
 import BarList from './bar_list';
 import ToolBox from './toolbox';
 import quickSort from '../algorithms/quick_sort_algo';
@@ -26,9 +27,10 @@ const App = ({tiles = [], colors = [], onGenerateArrayPressed}) => {
 };
 
 const mapStateToProps = (state) => ({
-  tiles: state.array.tiles,
-  colors: state.array.colors,
+  tiles: getTiles(state),
+  colors: getColors(state),
 });
+
 const mapDispatchToProps = (dispatch) => ({
   onGenerateArrayPressed: () => dispatch(generateArray()),
 });
