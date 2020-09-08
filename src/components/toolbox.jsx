@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {generateArray, setSpeed} from './actions';
+import {getTiles, getColors} from './selectors';
+import quickSort from '../algorithms/quick_sort_algo';
 
 const ToolBoxContainer = styled.div`
   border: 1px solid red;
@@ -12,13 +14,19 @@ const Button = styled.button`
   display: block;
 `;
 const ToolBox = ({
+  tiles,
+  colors,
   onGenerateArrayPressed,
-  handleClick,
   generateArray,
   setSpeed,
 }) => {
+  const handleClick = () => {
+    quickSort(tiles, colors);
+  };
+
   const handleChange = (e) => {
     const length = parseInt(e.target.value);
+    console.log('HELLo');
     generateArray(length);
   };
 
@@ -68,9 +76,16 @@ const ToolBox = ({
     </ToolBoxContainer>
   );
 };
-const mapPropsToState = () => {};
-const mapDispatchToState = (dispatch) => ({
+
+const mapStateToProps = (state) => ({
+  tiles: getTiles(state),
+  colors: getColors(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenerateArrayPressed: () => dispatch(generateArray()),
   generateArray: (length) => dispatch(generateArray(length)),
   setSpeed: (speed) => dispatch(setSpeed(speed)),
 });
-export default connect(null, mapDispatchToState)(ToolBox);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToolBox);
