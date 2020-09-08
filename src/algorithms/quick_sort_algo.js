@@ -7,7 +7,6 @@ const quickSort = (array, colors) => {
 };
 
 const quickSortHelper = async (array, startId, endId, colors) => {
-  console.log('Running quick sort');
   colors[startId] = 'red';
   colors[endId] = 'red';
   store.dispatch(updateColor(colors));

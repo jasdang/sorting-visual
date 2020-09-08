@@ -7,7 +7,6 @@ export const array = (state = {}, action) => {
     case GENERATE_ARRAY: {
       const {length} = payload;
       let tiles = createArray(length);
-      console.log(length);
       return {
         ...state,
         tiles: [...tiles],
@@ -30,10 +29,6 @@ export const array = (state = {}, action) => {
     }
     case SET_SPEED: {
       const {speed} = payload;
-      console.log({
-        ...state,
-        speed: speed,
-      });
       return {
         ...state,
         speed: speed,
