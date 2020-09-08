@@ -1,4 +1,4 @@
-import {GENERATE_ARRAY, UPDATE_ARRAY, UPDATE_COLOR} from './actions';
+import {GENERATE_ARRAY, UPDATE_ARRAY, UPDATE_COLOR, SET_SPEED} from './actions';
 
 export const array = (state = {}, action) => {
   const {type, payload} = action;
@@ -26,6 +26,17 @@ export const array = (state = {}, action) => {
       return {
         ...state,
         colors: [...colors],
+      };
+    }
+    case SET_SPEED: {
+      const {speed} = payload;
+      console.log({
+        ...state,
+        speed: speed,
+      });
+      return {
+        ...state,
+        speed: speed,
       };
     }
     default:

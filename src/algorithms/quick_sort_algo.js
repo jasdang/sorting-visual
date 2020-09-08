@@ -81,7 +81,8 @@ const quickSortHelper = async (array, startId, endId, colors) => {
 };
 
 const swap = async (array, i, j) => {
-  await sleep(20);
+  const speed = store.getState().array.speed;
+  await sleep(speed);
   let temp = array[i];
   array[i] = array[j];
   array[j] = temp;

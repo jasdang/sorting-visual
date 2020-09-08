@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {generateArray} from './actions';
+import {generateArray, setSpeed} from './actions';
 
 const ToolBoxContainer = styled.div`
   border: 1px solid red;
@@ -11,11 +11,20 @@ const ToolBoxContainer = styled.div`
 const Button = styled.button`
   display: block;
 `;
-const ToolBox = ({onGenerateArrayPressed, handleClick, generateArray}) => {
+const ToolBox = ({
+  onGenerateArrayPressed,
+  handleClick,
+  generateArray,
+  setSpeed,
+}) => {
   const handleChange = (e) => {
     const length = parseInt(e.target.value);
-    console.log(e.target.value);
     generateArray(length);
+  };
+
+  const onSpeedSelected = (e) => {
+    const speed = parseInt(e.currentTarget.value);
+    setSpeed(speed);
   };
   return (
     <ToolBoxContainer>
@@ -29,13 +38,37 @@ const ToolBox = ({onGenerateArrayPressed, handleClick, generateArray}) => {
         max='200'
         onChange={handleChange}
       />
-      <label htmlFor='sortingSpeed'>Set Speed</label>
-      <input type='range' />
+      <p>Set Speed</p>
+      <label htmlFor='highSpeed'>Fast</label>
+      <input
+        type='radio'
+        name='speed'
+        id='highSpeed'
+        value='0'
+        onClick={onSpeedSelected}
+      />
+      <label htmlFor='medSpeed'>Medium</label>
+      <input
+        type='radio'
+        name='speed'
+        id='medSpeed'
+        value='50'
+        onClick={onSpeedSelected}
+      />
+      <label htmlFor='lowSpeed'>Slow</label>
+      <input
+        type='radio'
+        name='speed'
+        id='lowSpeed'
+        value='300'
+        onClick={onSpeedSelected}
+      />
     </ToolBoxContainer>
   );
 };
 const mapPropsToState = () => {};
 const mapDispatchToState = (dispatch) => ({
   generateArray: (length) => dispatch(generateArray(length)),
+  setSpeed: (speed) => dispatch(setSpeed(speed)),
 });
 export default connect(null, mapDispatchToState)(ToolBox);

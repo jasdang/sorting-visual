@@ -15,3 +15,9 @@ export const updateColor = (colors) => ({
   type: UPDATE_COLOR,
   payload: {colors},
 });
+
+export const SET_SPEED = 'SET_SPEED';
+export const setSpeed = (speed) => ({
+  type: SET_SPEED,
+  payload: {speed},
+});
