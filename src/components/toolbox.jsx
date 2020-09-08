@@ -35,7 +35,9 @@ const ToolBox = ({
         type='range'
         name='arrayLength'
         id='arrayLength'
-        max='200'
+        defaultValue='85'
+        min='20'
+        max='150'
         onChange={handleChange}
       />
       <p>Set Speed</p>

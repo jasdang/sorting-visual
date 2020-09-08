@@ -14,7 +14,7 @@ const BarListContainer = styled.div`
 
 const BarList = ({tiles, colors}) => {
   const numOfBars = tiles.length;
-  const barWidth = Math.floor((1200 - 10) / numOfBars);
+  const barWidth = Math.floor((1200 - 50) / numOfBars);
   const barList = tiles.map((barHeight, id) => {
     return (
       <Bar
