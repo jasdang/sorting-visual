@@ -4,14 +4,15 @@ import {swap} from './helper';
 import regeneratorRuntime from 'regenerator-runtime';
 
 const insertionSort = async (tiles, colors) => {
+  colors[0] = 'grey';
+  store.dispatch(updateColor(colors));
   for (let i = 1; i < tiles.length; i++) {
-    let j = i;
-    colors[0] = 'grey';
+    colors[i + 1] = 'red';
     store.dispatch(updateColor(colors));
+    let j = i;
     while (j > 0 && tiles[j] < tiles[j - 1]) {
       colors[0] = 'black';
       store.dispatch(updateColor(colors));
-
       colors[j] = 'grey';
       store.dispatch(updateColor(colors));
       await swap(tiles, j, j - 1);
