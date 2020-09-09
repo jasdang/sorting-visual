@@ -1,6 +1,6 @@
 import {store} from '../../store';
 import {updateColor, updateArray} from '../components/actions';
-import {getSpeed} from '../components/selectors';
+import {swap} from './helper';
 import regeneratorRuntime from 'regenerator-runtime';
 
 const quickSort = (array, colors) => {
@@ -80,17 +80,13 @@ const quickSortHelper = async (array, startId, endId, colors) => {
   return array;
 };
 
-const swap = async (array, i, j) => {
-  const speed = getSpeed(store.getState());
-  await sleep(speed);
-  let temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
-  return array;
-};
-
-const sleep = (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
+// const swap = async (array, i, j) => {
+//   const speed = getSpeed(store.getState());
+//   await sleep(speed);
+//   let temp = array[i];
+//   array[i] = array[j];
+//   array[j] = temp;
+//   return array;
+// };
 
 export default quickSort;
