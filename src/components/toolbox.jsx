@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {generateArray, setSpeed} from './actions';
 import {getTiles, getColors} from './selectors';
 import quickSort from '../algorithms/quick_sort_algo';
+import insertionSort from '../algorithms/insertion_sort_algo';
 
 const ToolBoxContainer = styled.div`
   border: 1px solid red;
@@ -24,6 +25,10 @@ const ToolBox = ({
     quickSort(tiles, colors);
   };
 
+  const InsertionSortTest = () => {
+    insertionSort(tiles);
+  };
+
   const handleChange = (e) => {
     const length = parseInt(e.target.value);
     console.log('HELLo');
@@ -37,7 +42,8 @@ const ToolBox = ({
   return (
     <ToolBoxContainer>
       <Button onClick={onGenerateArrayPressed}>Generate</Button>
-      <Button onClick={handleClick}>Sort</Button>
+      <Button onClick={handleClick}>Quick Sort</Button>
+      <Button onClick={InsertionSortTest}>Insertion Sort</Button>
       <label htmlFor='arrayLength'>Set Array Length</label>
       <input
         type='range'
