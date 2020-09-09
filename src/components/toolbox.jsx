@@ -14,13 +14,7 @@ const ToolBoxContainer = styled.div`
 const Button = styled.button`
   display: block;
 `;
-const ToolBox = ({
-  tiles,
-  colors,
-  onGenerateArrayPressed,
-  generateArray,
-  setSpeed,
-}) => {
+const ToolBox = ({tiles, colors, generateArray, setSpeed}) => {
   const handleClick = () => {
     quickSort(tiles, colors);
   };
@@ -34,13 +28,17 @@ const ToolBox = ({
     generateArray(length);
   };
 
+  const onGenerateArrayPressed = () => {
+    const length = parseInt(document.getElementById('arrayLength').value);
+    generateArray(length);
+  };
   const onSpeedSelected = (e) => {
     const speed = parseInt(e.currentTarget.value);
     setSpeed(speed);
   };
   return (
     <ToolBoxContainer>
-      <Button onClick={onGenerateArrayPressed}>Generate</Button>
+      <Button onClick={onGenerateArrayPressed}>Generate New Array</Button>
       <Button onClick={handleClick}>Quick Sort</Button>
       <Button onClick={InsertionSortTest}>Insertion Sort</Button>
       <label htmlFor='arrayLength'>Set Array Length</label>
@@ -88,7 +86,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onGenerateArrayPressed: () => dispatch(generateArray()),
   generateArray: (length) => dispatch(generateArray(length)),
   setSpeed: (speed) => dispatch(setSpeed(speed)),
 });
