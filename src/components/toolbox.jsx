@@ -26,12 +26,11 @@ const ToolBox = ({
   };
 
   const InsertionSortTest = () => {
-    insertionSort(tiles);
+    insertionSort(tiles, colors);
   };
 
   const handleChange = (e) => {
     const length = parseInt(e.target.value);
-    console.log('HELLo');
     generateArray(length);
   };
 
@@ -68,7 +67,7 @@ const ToolBox = ({
         type='radio'
         name='speed'
         id='medSpeed'
-        value='50'
+        value='200'
         onClick={onSpeedSelected}
       />
       <label htmlFor='lowSpeed'>Slow</label>
@@ -76,7 +75,7 @@ const ToolBox = ({
         type='radio'
         name='speed'
         id='lowSpeed'
-        value='300'
+        value='500'
         onClick={onSpeedSelected}
       />
     </ToolBoxContainer>
