@@ -38,9 +38,6 @@ const ToolBox = ({tiles, colors, generateArray, setSpeed}) => {
   };
   return (
     <ToolBoxContainer>
-      <Button onClick={onGenerateArrayPressed}>Generate New Array</Button>
-      <Button onClick={handleClick}>Quick Sort</Button>
-      <Button onClick={InsertionSortTest}>Insertion Sort</Button>
       <label htmlFor='arrayLength'>Set Array Length</label>
       <input
         type='range'
@@ -76,6 +73,10 @@ const ToolBox = ({tiles, colors, generateArray, setSpeed}) => {
         value='500'
         onClick={onSpeedSelected}
       />
+
+      <Button onClick={onGenerateArrayPressed}>Generate New Array</Button>
+      <Button onClick={handleClick}>Quick Sort</Button>
+      <Button onClick={InsertionSortTest}>Insertion Sort</Button>
     </ToolBoxContainer>
   );
 };

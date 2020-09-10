@@ -1,6 +1,8 @@
+@import 'components/index';
+
 body {
   font-family: Helvetica;
-  background: #f7f7f7;
+  background: $background;
 }
 
 #root {
