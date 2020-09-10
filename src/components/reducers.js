@@ -1,4 +1,5 @@
 import {GENERATE_ARRAY, UPDATE_ARRAY, UPDATE_COLOR, SET_SPEED} from './actions';
+import {tileColor} from './colors';
 
 export const array = (state = {}, action) => {
   const {type, payload} = action;
@@ -10,7 +11,7 @@ export const array = (state = {}, action) => {
       return {
         ...state,
         tiles: [...tiles],
-        colors: tiles.slice().fill('blue'),
+        colors: tiles.slice().fill(tileColor),
       };
     }
     case UPDATE_ARRAY: {
@@ -39,10 +40,12 @@ export const array = (state = {}, action) => {
   }
 };
 
-export const createArray = (length = 50) => {
+export const createArray = (length = 85) => {
   let tiles = [];
   for (let i = 0; i < length; i++) {
-    tiles.push(Math.floor(Math.random() * 100));
+    const h = Math.floor(Math.random() * 100);
+    if (h < 5) h = 5;
+    tiles.push(h);
   }
   return tiles;
 };

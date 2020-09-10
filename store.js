@@ -1,12 +1,12 @@
 import {createStore, combineReducers} from 'redux';
 import {array, createArray} from './src/components/reducers';
-
+import {tileColor} from './src/components/colors';
 const reducers = {array};
 
 const rootReducer = combineReducers(reducers);
 
 const initialTiles = createArray();
-const initialColors = initialTiles.slice().fill('blue');
+const initialColors = initialTiles.slice().fill(tileColor);
 const initialStore = {
   array: {
     tiles: initialTiles,
