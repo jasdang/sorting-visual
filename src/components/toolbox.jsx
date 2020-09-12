@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {generateArray, setSpeed} from './actions';
+import Speed from './speed';
+import {generateArray} from './actions';
 import {getTiles, getColors} from './selectors';
 import quickSort from '../algorithms/quick_sort_algo';
 import insertionSort from '../algorithms/insertion_sort_algo';
@@ -21,7 +22,7 @@ const Button = styled.button`
   padding: 8px;
 `;
 
-const ToolBox = ({tiles, colors, generateArray, setSpeed}) => {
+const ToolBox = ({tiles, colors, generateArray}) => {
   const handleClick = () => {
     quickSort(tiles, colors);
   };
@@ -39,10 +40,7 @@ const ToolBox = ({tiles, colors, generateArray, setSpeed}) => {
     const length = parseInt(document.getElementById('arrayLength').value);
     generateArray(length);
   };
-  const onSpeedSelected = (e) => {
-    const speed = parseInt(e.currentTarget.value);
-    setSpeed(speed);
-  };
+
   return (
     <ToolBoxContainer>
       <label htmlFor='arrayLength'>Set Array Length</label>
@@ -56,30 +54,7 @@ const ToolBox = ({tiles, colors, generateArray, setSpeed}) => {
         onChange={handleChange}
       />
       <p>Set Speed</p>
-      <label htmlFor='highSpeed'>Fast</label>
-      <input
-        type='radio'
-        name='speed'
-        id='highSpeed'
-        value='0'
-        onClick={onSpeedSelected}
-      />
-      <label htmlFor='medSpeed'>Medium</label>
-      <input
-        type='radio'
-        name='speed'
-        id='medSpeed'
-        value='200'
-        onClick={onSpeedSelected}
-      />
-      <label htmlFor='lowSpeed'>Slow</label>
-      <input
-        type='radio'
-        name='speed'
-        id='lowSpeed'
-        value='500'
-        onClick={onSpeedSelected}
-      />
+      <Speed />
 
       <Button onClick={onGenerateArrayPressed}>Generate New Array</Button>
       <Button onClick={handleClick}>Quick Sort</Button>
@@ -95,7 +70,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   generateArray: (length) => dispatch(generateArray(length)),
-  setSpeed: (speed) => dispatch(setSpeed(speed)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToolBox);
