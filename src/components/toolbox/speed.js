@@ -2,24 +2,27 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setSpeed} from '../actions';
 import styled from 'styled-components';
-import {currentTileColor} from '../colors';
+import {currentTileColor, pivotTileColor} from '../colors';
 
 const InputRadio = styled.input`
-  opacity: 0;
-  cursor: pointer;
+  display: none;
+  &:checked + label {
+    background: ${pivotTileColor};
+  }
 `;
 
 const Label = styled.label`
   display: inline-block;
   border-radius: 2px;
   width: 80px;
-  margin: 10px 0;
+  margin: 10px;
+  margin-left: 0;
   padding: 8px;
   background: ${currentTileColor};
   font-weight: normal;
   text-align: center;
   &:hover {
-    border: 1px solid red;
+    border: 1px solid ${currentTileColor};
   }
 `;
 
@@ -31,7 +34,6 @@ const Speed = ({setSpeed}) => {
 
   return (
     <div>
-      <Label htmlFor='highSpeed'>Fast</Label>
       <InputRadio
         type='radio'
         name='speed'
@@ -39,16 +41,15 @@ const Speed = ({setSpeed}) => {
         value='0'
         onClick={onSpeedSelected}
       />
-      <Label htmlFor='medSpeed'>Medium</Label>
+      <Label htmlFor='highSpeed'>Fast</Label>
       <InputRadio
         type='radio'
         name='speed'
         id='medSpeed'
         value='200'
         onClick={onSpeedSelected}
-        checked='checked'
       />
-      <Label htmlFor='lowSpeed'>Slow</Label>
+      <Label htmlFor='medSpeed'>Medium</Label>
       <InputRadio
         type='radio'
         name='speed'
@@ -56,6 +57,7 @@ const Speed = ({setSpeed}) => {
         value='500'
         onClick={onSpeedSelected}
       />
+      <Label htmlFor='lowSpeed'>Slow</Label>
     </div>
   );
 };
