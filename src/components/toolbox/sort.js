@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {currentTileColor} from '../colors';
+import {sortedTileColor} from '../colors';
 import {getTiles, getColors, getAlgorithm} from '../selectors';
 import quickSort from '../../algorithms/quick_sort_algo';
 import insertionSort from '../../algorithms/insertion_sort_algo';
@@ -10,9 +10,11 @@ const Button = styled.button`
   display: block;
   border: none;
   border-radius: 2px;
-  background: ${currentTileColor};
+  background: ${sortedTileColor};
+  width: 80px;
   margin: 10px 0;
   padding: 8px;
+  font-weight: bold;
 `;
 
 const Sort = ({tiles, colors, algorithm}) => {
@@ -24,7 +26,7 @@ const Sort = ({tiles, colors, algorithm}) => {
     }
   };
 
-  return <Button onClick={handleClick}>SORT!</Button>;
+  return <Button onClick={handleClick}>SORT</Button>;
 };
 
 const mapStateToProps = (state) => ({
