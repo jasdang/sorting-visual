@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import Length from './length';
 import Speed from './speed';
+import Algorithm from './algorithm';
 import {generateArray} from '../actions';
 import {getTiles, getColors} from '../selectors';
 import quickSort from '../../algorithms/quick_sort_algo';
@@ -46,6 +47,9 @@ const ToolBox = ({tiles, colors, generateArray}) => {
 
       <p>Set Speed</p>
       <Speed />
+
+      <p>Set Algorithm</p>
+      <Algorithm />
 
       <Button onClick={handleClick}>Quick Sort</Button>
       <Button onClick={InsertionSortTest}>Insertion Sort</Button>

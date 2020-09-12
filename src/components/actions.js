@@ -21,3 +21,9 @@ export const setSpeed = (speed) => ({
   type: SET_SPEED,
   payload: {speed},
 });
+
+export const SET_ALGORITHM = 'SET_ALGORITHM';
+export const setAlgorithm = (algorithm) => ({
+  type: SET_ALGORITHM,
+  payload: {algorithm},
+});

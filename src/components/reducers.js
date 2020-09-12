@@ -1,4 +1,10 @@
-import {GENERATE_ARRAY, UPDATE_ARRAY, UPDATE_COLOR, SET_SPEED} from './actions';
+import {
+  GENERATE_ARRAY,
+  UPDATE_ARRAY,
+  UPDATE_COLOR,
+  SET_SPEED,
+  SET_ALGORITHM,
+} from './actions';
 import {tileColor} from './colors';
 
 export const array = (state = {}, action) => {
@@ -33,6 +39,13 @@ export const array = (state = {}, action) => {
       return {
         ...state,
         speed: speed,
+      };
+    }
+    case SET_ALGORITHM: {
+      const {algorithm} = payload;
+      return {
+        ...state,
+        algorithm: algorithm,
       };
     }
     default:

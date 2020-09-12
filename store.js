@@ -12,6 +12,7 @@ const initialStore = {
     tiles: initialTiles,
     colors: initialColors,
     speed: 0,
+    algorithm: '',
   },
 };
 const configuredStore = () =>
