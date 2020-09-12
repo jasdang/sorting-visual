@@ -1,6 +1,6 @@
 import React from 'react';
-import BarList from './bar_list';
-import ToolBox from './toolbox';
+import BarList from './bar/bar_list';
+import ToolBox from './toolbox/toolbox';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`

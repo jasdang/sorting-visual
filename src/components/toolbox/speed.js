@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setSpeed} from './actions';
+import {setSpeed} from '../actions';
 import styled from 'styled-components';
-import {currentTileColor} from './colors';
+import {currentTileColor} from '../colors';
 
 const InputRadio = styled.input`
   opacity: 0;

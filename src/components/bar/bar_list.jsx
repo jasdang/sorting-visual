@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Bar from './bar';
 import styled from 'styled-components';
-import {getTiles, getColors} from './selectors';
+import {getTiles, getColors} from '../selectors';
 
 const BarListContainer = styled.div`
   width: 1200px;
