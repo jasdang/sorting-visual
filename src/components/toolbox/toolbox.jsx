@@ -13,6 +13,9 @@ const ToolBoxContainer = styled.div`
   grid-template-columns: 100px 300px;
   grid-template-rows: auto;
   grid-gap: 20px;
+  @media screen and (max-width: 992px) {
+    display: ${(props) => (props.active ? 'block' : 'none')};
+  }
 `;
 const FullRow = styled.div`
   grid-column: 1/3;
@@ -20,7 +23,7 @@ const FullRow = styled.div`
 const SecondCol = styled.div`
   grid-column: 2/3;
 `;
-const ToolBox = () => {
+const ToolBox = ({props}) => {
   return (
     <ToolBoxContainer>
       <FullRow>

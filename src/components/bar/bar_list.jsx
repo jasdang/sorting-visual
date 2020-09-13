@@ -2,19 +2,33 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Bar from './bar';
 import styled from 'styled-components';
-import {getTiles, getColors} from '../selectors';
-import {generateArray} from '../actions';
+import {getTiles, getColors, getToolBoxShow} from '../selectors';
+import {generateArray, setToolBoxShow} from '../actions';
 import {pivotTileColor, sortedTileColor} from '../colors';
 
 const BarListContainer = styled.div`
   position: relative;
   width: 1400px;
-  padding: 10vh 10vh;
+  padding: 5vh 5vh;
   padding-right: 0;
-  padding-bottom: 5vh;
+  padding-top: 10vh;
   display: flex;
   justify-content: start;
   align-items: flex-end;
+  flex-grow: 1;
+  & button {
+    display: none;
+  }
+  @media screen and (max-width: 992px) {
+    width: 100vw;
+    padding: 4vw 2vw;
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+    }
+  }
 `;
 
 const Link = styled.a`
@@ -33,13 +47,17 @@ const Link = styled.a`
   }
 `;
 
-const BarList = ({tiles, colors, generateArray}) => {
+const BarList = ({tiles, colors, generateArray, onSettingClicked}) => {
   const onGenerateArrayPressed = () => {
     const length = parseInt(document.getElementById('arrayLength').value);
     generateArray(length);
   };
+
   const numOfBars = tiles.length;
-  const barWidth = Math.floor(1200 / numOfBars);
+
+  const barWidth =
+    Math.floor(1200 / numOfBars) >= 1 ? Math.floor(1200 / numOfBars) : 1;
+
   const barList = tiles.map((barHeight, id) => {
     return (
       <Bar
@@ -54,6 +72,7 @@ const BarList = ({tiles, colors, generateArray}) => {
   return (
     <BarListContainer>
       {barList}
+      <button onClick={onSettingClicked}>Settings</button>
       <Link onClick={onGenerateArrayPressed}>Refresh</Link>
     </BarListContainer>
   );
@@ -66,6 +85,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   generateArray: (length) => dispatch(generateArray(length)),
+  onSettingClicked: () => dispatch(setToolBoxShow()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarList);

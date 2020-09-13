@@ -4,10 +4,12 @@ import {
   UPDATE_COLOR,
   SET_SPEED,
   SET_ALGORITHM,
+  SET_TOOLBOX_SHOW,
 } from './actions';
 import {tileColor} from './colors';
+import {combineReducers} from 'redux';
 
-export const array = (state = {}, action) => {
+const array = (state = {}, action) => {
   const {type, payload} = action;
 
   switch (type) {
@@ -48,6 +50,31 @@ export const array = (state = {}, action) => {
         algorithm: algorithm,
       };
     }
+    case SET_TOOLBOX_SHOW: {
+      const {show} = payload;
+      return {
+        ...state,
+        toolbox: {
+          ...toolbox,
+          show: show,
+        },
+      };
+    }
+    default:
+      return state;
+  }
+};
+
+const toolbox = (state = {}, action) => {
+  const {type, payload} = action;
+  switch (type) {
+    case SET_TOOLBOX_SHOW: {
+      const {show} = state;
+      return {
+        ...state,
+        show: !show,
+      };
+    }
     default:
       return state;
   }
@@ -60,6 +87,7 @@ export const createArray = (length = 85) => {
     if (h < 5) h = 5;
     tiles.push(h);
   }
-  console.log(tiles.some((h) => h < 5));
   return tiles;
 };
+
+export const reducers = combineReducers({array, toolbox});

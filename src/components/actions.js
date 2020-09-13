@@ -27,3 +27,8 @@ export const setAlgorithm = (algorithm) => ({
   type: SET_ALGORITHM,
   payload: {algorithm},
 });
+
+export const SET_TOOLBOX_SHOW = 'SET_TOOLBOX_SHOW';
+export const setToolBoxShow = () => ({
+  type: SET_TOOLBOX_SHOW,
+});
