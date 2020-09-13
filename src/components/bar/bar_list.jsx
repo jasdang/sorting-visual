@@ -8,15 +8,17 @@ import {pivotTileColor, sortedTileColor} from '../colors';
 
 const BarListContainer = styled.div`
   position: relative;
-  width: 1200px;
+  width: 1400px;
+  padding: 10vh 10vh;
+  padding-right: 0;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: flex-end;
 `;
 
 const Link = styled.a`
   position: absolute;
-  top: 0px;
+  top: 50px;
   right: 0px;
   display: block;
   border: none;
@@ -36,7 +38,7 @@ const BarList = ({tiles, colors, generateArray}) => {
     generateArray(length);
   };
   const numOfBars = tiles.length;
-  const barWidth = Math.floor((1200 - 120) / numOfBars);
+  const barWidth = Math.floor(1200 / numOfBars);
   const barList = tiles.map((barHeight, id) => {
     return (
       <Bar

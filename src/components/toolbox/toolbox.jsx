@@ -8,11 +8,11 @@ import Sort from './sort';
 const ToolBoxContainer = styled.div`
   width: 500px;
   height: fit-content;
-  padding: 0 50px;
+  padding: 50px;
   display: grid;
   grid-template-columns: 100px 300px;
   grid-template-rows: auto;
-  grid-gap: 10px;
+  grid-gap: 20px;
 `;
 const FullRow = styled.div`
   grid-column: 1/3;

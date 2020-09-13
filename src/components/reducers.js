@@ -56,9 +56,10 @@ export const array = (state = {}, action) => {
 export const createArray = (length = 85) => {
   let tiles = [];
   for (let i = 0; i < length; i++) {
-    const h = Math.floor(Math.random() * 100);
+    const h = Math.floor(Math.random() * 80);
     if (h < 5) h = 5;
     tiles.push(h);
   }
+  console.log(tiles.some((h) => h < 5));
   return tiles;
 };
