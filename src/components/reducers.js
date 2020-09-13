@@ -50,16 +50,6 @@ const array = (state = {}, action) => {
         algorithm: algorithm,
       };
     }
-    case SET_TOOLBOX_SHOW: {
-      const {show} = payload;
-      return {
-        ...state,
-        toolbox: {
-          ...toolbox,
-          show: show,
-        },
-      };
-    }
     default:
       return state;
   }
