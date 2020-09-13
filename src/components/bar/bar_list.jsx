@@ -11,6 +11,7 @@ const BarListContainer = styled.div`
   width: 1400px;
   padding: 10vh 10vh;
   padding-right: 0;
+  padding-bottom: 5vh;
   display: flex;
   justify-content: start;
   align-items: flex-end;
