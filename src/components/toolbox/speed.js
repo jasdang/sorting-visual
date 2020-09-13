@@ -4,6 +4,12 @@ import {setSpeed} from '../actions';
 import styled from 'styled-components';
 import {currentTileColor, pivotTileColor} from '../colors';
 
+const RadioContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+`;
+
 const InputRadio = styled.input`
   display: none;
   &:checked + label {
@@ -15,8 +21,6 @@ const Label = styled.label`
   display: inline-block;
   border-radius: 2px;
   width: 80px;
-  margin: 10px;
-  margin-left: 0;
   padding: 8px;
   background: ${currentTileColor};
   font-weight: normal;
@@ -33,7 +37,7 @@ const Speed = ({setSpeed}) => {
   };
 
   return (
-    <div>
+    <RadioContainer>
       <InputRadio
         type='radio'
         name='speed'
@@ -58,7 +62,7 @@ const Speed = ({setSpeed}) => {
         onClick={onSpeedSelected}
       />
       <Label htmlFor='lowSpeed'>Slow</Label>
-    </div>
+    </RadioContainer>
   );
 };
 const mapDispatchToProps = (dispatch) => ({

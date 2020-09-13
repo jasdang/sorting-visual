@@ -12,7 +12,7 @@ const Button = styled.button`
   border-radius: 2px;
   background: ${sortedTileColor};
   width: 80px;
-  margin: 10px 0;
+  margin: 10px auto;
   padding: 8px;
   font-weight: bold;
 `;
@@ -26,7 +26,7 @@ const Sort = ({tiles, colors, algorithm}) => {
     }
   };
 
-  return <Button onClick={handleClick}>SORT</Button>;
+  return <Button onClick={handleClick}>START</Button>;
 };
 
 const mapStateToProps = (state) => ({

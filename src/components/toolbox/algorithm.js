@@ -4,6 +4,12 @@ import {setAlgorithm} from '../actions';
 import styled from 'styled-components';
 import {currentTileColor, pivotTileColor} from '../colors';
 
+const RadioContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+`;
+
 const InputRadio = styled.input`
   display: none;
   &:checked + label {
@@ -14,9 +20,7 @@ const InputRadio = styled.input`
 const Label = styled.label`
   display: inline-block;
   border-radius: 2px;
-  width: 160px;
-  margin: 10px;
-  margin-left: 0;
+  width: 140px;
   padding: 8px;
   background: ${currentTileColor};
   font-weight: normal;
@@ -34,7 +38,7 @@ const Algorithm = ({setAlgorithm}) => {
   };
 
   return (
-    <div>
+    <RadioContainer>
       <InputRadio
         type='radio'
         name='algorithm'
@@ -51,7 +55,7 @@ const Algorithm = ({setAlgorithm}) => {
         onClick={onAlgorithmSelected}
       />
       <Label htmlFor='insertionSort'>Insertion Sort</Label>
-    </div>
+    </RadioContainer>
   );
 };
 const mapDispatchToProps = (dispatch) => ({

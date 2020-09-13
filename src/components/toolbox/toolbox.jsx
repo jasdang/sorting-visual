@@ -7,22 +7,36 @@ import Sort from './sort';
 
 const ToolBoxContainer = styled.div`
   width: 500px;
-  padding: 50px;
+  height: fit-content;
+  padding: 0 50px;
+  display: grid;
+  grid-template-columns: 100px 300px;
+  grid-template-rows: auto;
+  grid-gap: 10px;
 `;
-
+const FullRow = styled.div`
+  grid-column: 1/3;
+`;
+const SecondCol = styled.div`
+  grid-column: 2/3;
+`;
 const ToolBox = () => {
   return (
     <ToolBoxContainer>
-      <p>Set Array Length</p>
+      <FullRow>
+        <h3>Settings</h3>
+      </FullRow>
+      <p>Array Length</p>
       <Length />
 
-      <p>Set Speed</p>
+      <div>Speed</div>
       <Speed />
 
-      <p>Set Algorithm</p>
+      <div>Set Algorithm</div>
       <Algorithm />
-
-      <Sort />
+      <SecondCol>
+        <Sort />
+      </SecondCol>
     </ToolBoxContainer>
   );
 };

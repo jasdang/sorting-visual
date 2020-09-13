@@ -26,7 +26,7 @@ const Length = ({generateArray}) => {
 const InputRange = styled.input`
   height: 5px;
   -webkit-appearance: none;
-  margin: 10px 0;
+  margin: 8px 0;
   width: 100%;
   &:focus {
     outline: none;
