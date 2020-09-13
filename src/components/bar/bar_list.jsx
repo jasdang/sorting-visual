@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Bar from './bar';
 import styled from 'styled-components';
-import {getTiles, getColors, getToolBoxShow} from '../selectors';
+import {getTiles, getColors} from '../selectors';
 import {generateArray, setToolBoxShow} from '../actions';
 import {pivotTileColor, sortedTileColor} from '../colors';
 
@@ -20,7 +20,7 @@ const BarListContainer = styled.div`
     display: none;
   }
   @media screen and (max-width: 992px) {
-    width: 100vw;
+    width: 70vw;
     padding: 4vw 2vw;
     button {
       position: absolute;
