@@ -8,7 +8,6 @@ import {pivotTileColor, sortedTileColor} from '../colors';
 
 const BarListContainer = styled.div`
   position: relative;
-  width: 1400px;
   padding: 5vh 5vh;
   padding-right: 0;
   padding-top: 10vh;

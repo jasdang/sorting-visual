@@ -8,7 +8,6 @@ import Sort from './sort';
 import {getToolBoxShow} from '../selectors';
 
 const ToolBoxContainer = styled.div`
-  width: 500px;
   height: fit-content;
   padding: 50px;
   display: grid;

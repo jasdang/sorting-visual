@@ -4,9 +4,10 @@ import ToolBox from './toolbox/toolbox';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
-  display: flex;
+  display: grid;
   width: 100vw;
-  justify-content: start;
+  height: 100vh;
+  grid-template-columns: 70vw 30vw;
 `;
 
 const App = () => {
