@@ -24,7 +24,7 @@ const BarListContainer = styled.div`
     height: 70vh;
     align-self: end;
     & a {
-      display: none;
+      top: -3vh;
     }
   }
 `;

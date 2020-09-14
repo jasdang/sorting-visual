@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {setSpeed} from '../actions';
+import {getSpeed} from '../selectors';
 import styled from 'styled-components';
 import {currentTileColor, pivotTileColor} from '../colors';
 
@@ -30,12 +31,11 @@ const Label = styled.label`
   }
 `;
 
-const Speed = ({setSpeed}) => {
+const Speed = ({currentSpeed, setSpeed}) => {
   const onSpeedSelected = (e) => {
     const speed = parseInt(e.currentTarget.value);
     setSpeed(speed);
   };
-
   return (
     <RadioContainer>
       <InputRadio
@@ -43,7 +43,8 @@ const Speed = ({setSpeed}) => {
         name='speed'
         id='highSpeed'
         value='0'
-        onClick={onSpeedSelected}
+        checked={currentSpeed === 0}
+        onChange={onSpeedSelected}
       />
       <Label htmlFor='highSpeed'>Fast</Label>
       <InputRadio
@@ -51,7 +52,8 @@ const Speed = ({setSpeed}) => {
         name='speed'
         id='medSpeed'
         value='200'
-        onClick={onSpeedSelected}
+        checked={currentSpeed === 200}
+        onChange={onSpeedSelected}
       />
       <Label htmlFor='medSpeed'>Medium</Label>
       <InputRadio
@@ -59,13 +61,17 @@ const Speed = ({setSpeed}) => {
         name='speed'
         id='lowSpeed'
         value='500'
-        onClick={onSpeedSelected}
+        checked={currentSpeed === 500}
+        onChange={onSpeedSelected}
       />
       <Label htmlFor='lowSpeed'>Slow</Label>
     </RadioContainer>
   );
 };
+const mapStateToProps = (state) => ({
+  currentSpeed: getSpeed(state),
+});
 const mapDispatchToProps = (dispatch) => ({
   setSpeed: (speed) => dispatch(setSpeed(speed)),
 });
-export default connect(null, mapDispatchToProps)(Speed);
+export default connect(mapStateToProps, mapDispatchToProps)(Speed);

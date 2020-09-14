@@ -9,7 +9,7 @@ const initialStore = {
     tiles: initialTiles,
     colors: initialColors,
     speed: 0,
-    algorithm: '',
+    algorithm: 'quickSort',
   },
   toolbox: {
     show: false,
