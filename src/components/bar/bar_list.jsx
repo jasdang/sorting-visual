@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Bar from './bar';
 import styled from 'styled-components';
 import {getTiles, getColors} from '../selectors';
-import {generateArray, setToolBoxShow} from '../actions';
+import {generateArray} from '../actions';
 import {pivotTileColor, sortedTileColor} from '../colors';
 
 const BarListContainer = styled.div`
@@ -21,11 +21,10 @@ const BarListContainer = styled.div`
   @media screen and (max-width: 992px) {
     padding: 4vw 2vw;
     padding-bottom: 0;
-    button {
-      position: absolute;
-      right: 0;
-      top: 0;
-      display: block;
+    height: 70vh;
+    align-self: end;
+    & a {
+      display: none;
     }
   }
 `;
@@ -46,7 +45,7 @@ const Link = styled.a`
   }
 `;
 
-const BarList = ({tiles, colors, generateArray, onSettingClicked}) => {
+const BarList = ({tiles, colors, generateArray}) => {
   const onGenerateArrayPressed = () => {
     const length = parseInt(document.getElementById('arrayLength').value);
     generateArray(length);
@@ -71,7 +70,6 @@ const BarList = ({tiles, colors, generateArray, onSettingClicked}) => {
   return (
     <BarListContainer>
       {barList}
-      <button onClick={onSettingClicked}>Settings</button>
       <Link onClick={onGenerateArrayPressed}>Refresh</Link>
     </BarListContainer>
   );
@@ -84,7 +82,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   generateArray: (length) => dispatch(generateArray(length)),
-  onSettingClicked: () => dispatch(setToolBoxShow()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarList);

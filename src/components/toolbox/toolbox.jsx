@@ -1,26 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 import Length from './length';
 import Speed from './speed';
 import Algorithm from './algorithm';
 import Sort from './sort';
-import {getToolBoxShow} from '../selectors';
 
 const ToolBoxContainer = styled.div`
   height: fit-content;
   padding: 50px;
   display: grid;
-  grid-template-columns: 100px 300px;
+  grid-template-columns: 100px auto;
   grid-template-rows: auto;
   grid-gap: 20px;
-  @media screen and (max-width: 992px) {
-    ${'' /* display: none; */}
-    display: ${(props) => {
-      console.log(props.show);
-      return props.show ? 'block' : 'none';
-    }};
-    float: right;
   }
 `;
 const FullRow = styled.div`
@@ -29,9 +20,9 @@ const FullRow = styled.div`
 const SecondCol = styled.div`
   grid-column: 2/3;
 `;
-const ToolBox = ({show}) => {
+const ToolBox = () => {
   return (
-    <ToolBoxContainer show={show}>
+    <ToolBoxContainer>
       <FullRow>
         <h3>Settings</h3>
       </FullRow>
@@ -49,8 +40,4 @@ const ToolBox = ({show}) => {
     </ToolBoxContainer>
   );
 };
-
-const mapStateToProps = (state) => ({
-  show: getToolBoxShow(state),
-});
-export default connect(mapStateToProps)(ToolBox);
+export default ToolBox;
