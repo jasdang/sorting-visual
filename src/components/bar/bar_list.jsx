@@ -19,8 +19,8 @@ const BarListContainer = styled.div`
     display: none;
   }
   @media screen and (max-width: 992px) {
-    width: 70vw;
     padding: 4vw 2vw;
+    padding-bottom: 0;
     button {
       position: absolute;
       right: 0;
