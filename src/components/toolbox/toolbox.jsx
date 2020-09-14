@@ -7,11 +7,15 @@ import Sort from './sort';
 
 const ToolBoxContainer = styled.div`
   height: fit-content;
-  padding: 50px;
+  margin: 50px;
   display: grid;
   grid-template-columns: 100px auto;
   grid-template-rows: auto;
   grid-gap: 20px;
+  @media screen and (max-width: 992px) {
+    padding: 8vw;
+    padding-bottom: 0;
+    grid-template-columns: 1fr 3fr;
   }
 `;
 const FullRow = styled.div`
