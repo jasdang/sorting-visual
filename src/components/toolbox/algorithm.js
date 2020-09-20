@@ -3,32 +3,10 @@ import {connect} from 'react-redux';
 import {setAlgorithm} from '../actions';
 import {getAlgorithm} from '../selectors';
 import styled from 'styled-components';
-import {currentTileColor, pivotTileColor} from '../colors';
+import {Label, RadioContainer, InputRadio} from './common_style';
 
-const RadioContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-`;
-
-const InputRadio = styled.input`
-  display: none;
-  &:checked + label {
-    background: ${pivotTileColor};
-  }
-`;
-
-const Label = styled.label`
-  display: inline-block;
-  border-radius: 2px;
+const LongLabel = styled(Label)`
   width: 140px;
-  padding: 8px;
-  background: ${currentTileColor};
-  font-weight: normal;
-  text-align: center;
-  &:hover {
-    border: 1px solid ${currentTileColor};
-  }
 `;
 
 const Algorithm = ({algorithm, setAlgorithm}) => {
@@ -47,7 +25,7 @@ const Algorithm = ({algorithm, setAlgorithm}) => {
         checked={algorithm === 'quickSort'}
         onChange={onAlgorithmSelected}
       />
-      <Label htmlFor='quickSort'>Quick Sort</Label>
+      <LongLabel htmlFor='quickSort'>Quick Sort</LongLabel>
       <InputRadio
         type='radio'
         name='algorithm'
@@ -56,7 +34,7 @@ const Algorithm = ({algorithm, setAlgorithm}) => {
         checked={algorithm === 'insertionSort'}
         onChange={onAlgorithmSelected}
       />
-      <Label htmlFor='insertionSort'>Insertion Sort</Label>
+      <LongLabel htmlFor='insertionSort'>Insertion Sort</LongLabel>
     </RadioContainer>
   );
 };
