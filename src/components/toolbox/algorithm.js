@@ -35,6 +35,15 @@ const Algorithm = ({algorithm, setAlgorithm}) => {
         onChange={onAlgorithmSelected}
       />
       <LongLabel htmlFor='insertionSort'>Insertion Sort</LongLabel>
+      <InputRadio
+        type='radio'
+        name='algorithm'
+        id='mergeSort'
+        value='mergeSort'
+        checked={algorithm === 'mergeSort'}
+        onChange={onAlgorithmSelected}
+      />
+      <LongLabel htmlFor='mergeSort'>Merge Sort</LongLabel>
     </RadioContainer>
   );
 };

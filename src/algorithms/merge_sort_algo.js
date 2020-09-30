@@ -10,6 +10,7 @@ import {swap} from './helper';
 import regeneratorRuntime from 'regenerator-runtime';
 
 const mergeSort = (array) => {
+  console.log('Running merge sort');
   if (array.length <= 1) {
     return array;
   } else if (array.length === 2) {

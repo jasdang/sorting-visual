@@ -5,6 +5,7 @@ import {sortedTileColor} from '../colors';
 import {getTiles, getColors, getAlgorithm} from '../selectors';
 import quickSort from '../../algorithms/quick_sort_algo';
 import insertionSort from '../../algorithms/insertion_sort_algo';
+import mergeSort from '../../algorithms/merge_sort_algo';
 
 const Button = styled.button`
   display: block;
@@ -23,6 +24,8 @@ const Sort = ({tiles, colors, algorithm}) => {
       quickSort(tiles, colors);
     } else if (algorithm === 'insertionSort') {
       insertionSort(tiles, colors);
+    } else if (algorithm === 'mergeSort') {
+      mergeSort(tiles);
     }
   };
 
