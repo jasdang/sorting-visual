@@ -6,52 +6,42 @@ import {
   pivotTileColor,
   currentTileColor,
 } from '../components/colors';
-import {swap} from './helper';
+import {sleep} from './helper';
 import regeneratorRuntime from 'regenerator-runtime';
 
 const mergeSort = (array) => {
-  console.log('Running merge sort');
-  if (array.length <= 1) {
-    return array;
-  } else if (array.length === 2) {
-    const splitted = split(array);
-    const firstArr = splitted[0];
-    const secondArr = splitted[1];
-    return merge(firstArr, secondArr);
-  } else {
-    const splitted = split(array);
-    const firstArr = mergeSort(splitted[0]);
-    const secondArr = mergeSort(splitted[1]);
-    return merge(firstArr, secondArr);
-  }
+  if (array.length <= 1) return array;
+  const auxiliaryArray = array.slice();
+  mergeSortHelper(array, 0, array.length - 1, auxiliaryArray);
+  store.dispatch(updateArray(array));
+  return array;
 };
 
-const split = (array) => {
-  const midIdx = Math.floor((array.length - 1) / 2);
-  const firstArr = array.slice(0, midIdx + 1);
-  const secondArr = array.slice(midIdx + 1);
-  return [firstArr, secondArr];
+const mergeSortHelper = (mainArray, startId, endId, auxiliaryArray) => {
+  if (startId === endId) return;
+  const middleId = Math.floor((startId + endId) / 2);
+  mergeSortHelper(auxiliaryArray, startId, middleId, mainArray);
+  mergeSortHelper(auxiliaryArray, middleId + 1, endId, mainArray);
+  doMerge(mainArray, startId, middleId, endId, auxiliaryArray);
 };
 
-const merge = (firstArr, secondArr) => {
-  const arr = [];
-  let i = 0;
-  let j = 0;
-
-  while (i < firstArr.length && j < secondArr.length) {
-    if (firstArr[i] <= secondArr[j]) {
-      arr.push(firstArr[i]);
-      i++;
+const doMerge = (mainArray, startId, middleId, endId, auxiliaryArray) => {
+  let k = startId;
+  let i = startId;
+  let j = middleId + 1;
+  while (i <= middleId && j <= endId) {
+    if (auxiliaryArray[i] <= auxiliaryArray[j]) {
+      mainArray[k++] = auxiliaryArray[i++];
     } else {
-      arr.push(secondArr[j]);
-      j++;
+      mainArray[k++] = auxiliaryArray[j++];
     }
   }
-  const newArr =
-    i >= firstArr.length
-      ? arr.concat(secondArr.slice(j))
-      : arr.concat(firstArr.slice(i));
-  return newArr;
+  while (i <= middleId) {
+    mainArray[k++] = auxiliaryArray[i++];
+  }
+  while (j <= endId) {
+    mainArray[k++] = auxiliaryArray[j++];
+  }
 };
 
 export default mergeSort;
