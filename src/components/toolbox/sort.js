@@ -25,7 +25,7 @@ const Sort = ({tiles, colors, algorithm}) => {
     } else if (algorithm === 'insertionSort') {
       insertionSort(tiles, colors);
     } else if (algorithm === 'mergeSort') {
-      mergeSort(tiles);
+      mergeSort(tiles, colors);
     }
   };
 

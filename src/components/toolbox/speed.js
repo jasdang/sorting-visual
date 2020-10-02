@@ -33,8 +33,8 @@ const Speed = ({currentSpeed, setSpeed}) => {
         type='radio'
         name='speed'
         id='lowSpeed'
-        value='500'
-        checked={currentSpeed === 500}
+        value='1500'
+        checked={currentSpeed === 1500}
         onChange={onSpeedSelected}
       />
       <Label htmlFor='lowSpeed'>Slow</Label>
