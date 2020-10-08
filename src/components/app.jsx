@@ -11,6 +11,7 @@ const AppContainer = styled.div`
   @media screen and (max-width: 992px) {
     grid-template-columns: 100vw;
     width: 100vw;
+    height: 100vh;
   }
 `;
 

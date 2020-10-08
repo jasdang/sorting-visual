@@ -5,7 +5,7 @@ const Bar = ({barHeight, barColor, barWidth}) => {
     display: 'inline-block',
     border: '1px solid white',
     borderRadius: '4px 4px 0px 0px',
-    width: `${barWidth}px`,
+    width: `${barWidth}vw`,
     height: `${barHeight}vh`,
     backgroundColor: `${barColor}`,
     margin: '0px',

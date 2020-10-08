@@ -7,6 +7,7 @@ import Sort from './sort';
 
 const ToolBoxContainer = styled.div`
   height: fit-content;
+  padding: 10px;
   margin: 50px;
   display: grid;
   grid-template-columns: 100px auto;

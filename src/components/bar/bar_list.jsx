@@ -53,8 +53,7 @@ const BarList = ({tiles, colors, generateArray}) => {
 
   const numOfBars = tiles.length;
 
-  const barWidth =
-    Math.floor(1200 / numOfBars) >= 1 ? Math.floor(1200 / numOfBars) : 1;
+  const barWidth = 70 / numOfBars;
 
   const barList = tiles.map((barHeight, id) => {
     return (
