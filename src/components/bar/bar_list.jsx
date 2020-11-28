@@ -26,6 +26,7 @@ const BarListContainer = styled.div`
     & a {
       top: -3vh;
     }
+    justify-content: center;
   }
 `;
 
@@ -53,7 +54,7 @@ const BarList = ({tiles, colors, generateArray}) => {
 
   const numOfBars = tiles.length;
 
-  const barWidth = 70 / numOfBars;
+  const barWidth = 80 / numOfBars;
 
   const barList = tiles.map((barHeight, id) => {
     return (

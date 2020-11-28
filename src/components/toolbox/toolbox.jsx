@@ -8,14 +8,15 @@ import Sort from './sort';
 const ToolBoxContainer = styled.div`
   height: fit-content;
   padding: 10px;
-  margin: 50px;
+  margin: 50px 10px;
   display: grid;
   grid-template-columns: 100px auto;
   grid-template-rows: auto;
   grid-gap: 20px;
   @media screen and (max-width: 992px) {
-    padding: 8vw;
+    padding: 8vw 4vw;
     padding-bottom: 0;
+    margin: 25px;
     grid-template-columns: 1fr 3fr;
   }
 `;

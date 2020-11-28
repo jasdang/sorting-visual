@@ -99,7 +99,7 @@ const InputRange = styled.input`
     height: 18px;
     width: 18px;
     border-radius: 25px;
-    background: ${pivotTileColor};
+    background: '${pivotTileColor}';
     cursor: pointer;
   }
   &:focus::-ms-fill-lower {
